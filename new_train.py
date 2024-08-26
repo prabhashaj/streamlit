@@ -1,6 +1,6 @@
 import streamlit as st
 from sklearn.datasets import load_iris
-from sklearn.neighbors import KNeighboursClassifier
+from sklearn.neighbors import KNeighborsClassifier
 import pandas as pd
 
 iris = load_iris()
