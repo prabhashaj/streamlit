@@ -1,14 +1,14 @@
 import streamlit as st
 from sklearn.datasets import load_iris
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.neighbors import KNeighboursClassifier
 import pandas as pd
 
 iris = load_iris()
 X = iris.data
 y = iris.target
 
-clf = RandomForestClassifier()
-clf.fit(X, y)
+knn=KNeighnorsClassifier(n_neighbors=3)
+knn.fit(X, y)
 
 def user_input_features():
     sepal_length = st.sidebar.slider('Sepal length (cm)', float(X[:, 0].min()), float(X[:, 0].max()), float(X[:, 0].mean()))
@@ -31,8 +31,8 @@ df = user_input_features()
 st.subheader('User Input Features')
 st.write(df)
 
-prediction = clf.predict(df)
-prediction_proba = clf.predict_proba(df)
+prediction = knn.predict(df)
+prediction_proba = knn.predict_proba(df)
 
 st.subheader('Prediction')
 st.write(iris.target_names[prediction][0])
