@@ -11,16 +11,21 @@ clf = RandomForestClassifier()
 clf.fit(X, y)
 
 def user_input_features():
-sepal_length = st.sidebar.slider('Sepal length (cm)', float(X[:,0].min()), f
-sepal_width = st.sidebar.slider('Sepal width (cm)', float(X[:,1].min()), flo
-petal_length = st.sidebar.slider('Petal length (cm)', float(X[:,2].min()), f
-petal_width = st.sidebar.slider('Petal width (cm)', float(X[:,3].min()), flo
-data = {'sepal_length': sepal_length,
-'sepal_width': sepal_width,
-'petal_length': petal_length,
-'petal_width': petal_width}
-features = pd.DataFrame(data, index=[0])
-return features
+    sepal_length = st.sidebar.slider('Sepal length (cm)', float(X[:, 0].min()), float(X[:, 0].max()), float(X[:, 0].mean()))
+    sepal_width = st.sidebar.slider('Sepal width (cm)', float(X[:, 1].min()), float(X[:, 1].max()), float(X[:, 1].mean()))
+    petal_length = st.sidebar.slider('Petal length (cm)', float(X[:, 2].min()), float(X[:, 2].max()), float(X[:, 2].mean()))
+    petal_width = st.sidebar.slider('Petal width (cm)', float(X[:, 3].min()), float(X[:, 3].max()), float(X[:, 3].mean()))
+    
+    data = {
+        'sepal_length': sepal_length,
+        'sepal_width': sepal_width,
+        'petal_length': petal_length,
+        'petal_width': petal_width
+    }
+    
+    features = pd.DataFrame(data, index=[0])
+    return features
+
 df = user_input_features()
 
 st.subheader('User Input Features')
